@@ -1,5 +1,5 @@
 %global global_ver 2.4.4
-%global global_rel 1
+%global global_rel 2
 %global debug_package %{nil}
 
 Name:		icecast
@@ -40,7 +40,7 @@ and supports open standards for communication and interaction.
 
 %pre
 %{_bindir}/getent passwd %{name} >/dev/null || \
-  %{_sbindir}/useradd -M -r -d %{_datadir}%{name} -s /sbin/nologin \
+  %{_sbindir}/useradd -M -r -d %{_datadir}/%{name} -s /sbin/nologin \
   -c "%{name} streaming server" %{name} > /dev/null 2>&1 || :
 
 %clean
@@ -57,5 +57,9 @@ and supports open standards for communication and interaction.
 %{_unitdir}/%{name}.service
 
 %changelog
-* Mon Nov 06 2023 Acid_Scorpion <dmitry@petrich.me>
+
+* Sun Nov 19 2023 Acid_Scorpion <dmitry@petrich.me> - 2.4.4-2
+- Fixed homedir for user icecast
+
+* Mon Nov 06 2023 Acid_Scorpion <dmitry@petrich.me> - 2.4.4-1
 - Initial build
