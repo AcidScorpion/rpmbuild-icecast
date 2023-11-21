@@ -1,5 +1,5 @@
 %global global_ver 2.4.4
-%global global_rel 2
+%global global_rel 3
 %global debug_package %{nil}
 
 Name:		icecast
@@ -26,7 +26,8 @@ and supports open standards for communication and interaction.
 %autosetup
 
 %build
-%configure
+%configure --with-curl --with-ogg --with-openssl --with-openssl --with-vorbis --enable-yp
+  
 %make_build
 
 %install
@@ -57,6 +58,9 @@ and supports open standards for communication and interaction.
 %{_unitdir}/%{name}.service
 
 %changelog
+
+* Sun Nov 19 2023 Acid_Scorpion <dmitry@petrich.me> - 2.4.4-3
+- Added --with-curl --with-ogg --with-openssl --with-vorbis --enable-yp
 
 * Sun Nov 19 2023 Acid_Scorpion <dmitry@petrich.me> - 2.4.4-2
 - Fixed homedir for user icecast
